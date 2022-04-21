@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { Card, CardImg, CardTitle, CardBody, CardText } from "reactstrap";
 import dateFormat from "dateformat";
 
+//Declaring StaffList
 const StaffList = (props) => {
   const [selectedStaff, setSelectedStaff] = useState(null);
   const [columDefault, setColumDefault] = useState(
     "col-12 col-md-6 col-lg-4 mt-3"
   );
+  //Declaring columnSelect
   const columnSelect = (col) => {
     setColumDefault(col);
   };
+  //Declaring Staff
   const Staff = () => {
     if (selectedStaff !== null) {
       return (
@@ -41,6 +44,7 @@ const StaffList = (props) => {
       return <div></div>;
     }
   };
+  // Set up button to change quantity of columms
   return (
     <div className="container">
       <div
