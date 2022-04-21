@@ -41,4 +41,47 @@ const StaffList = (props) => {
       return <div></div>;
     }
   };
+  return (
+    <div className="container">
+      <div
+        className="row m-3"
+        style={{ padding: 10, display: "flex", justifyContent: "center" }}
+      >
+        <button
+          style={{ marginRight: 10 }}
+          onClick={() => columnSelect("col-md-2 mt-1")}
+          className="btn btn-warning col-2"
+        >
+          6 cột
+        </button>
+        <button
+          style={{ marginRight: 10 }}
+          onClick={() => columnSelect("col-md-3 mt-1")}
+          className="btn btn-warning col-2"
+        >
+          4 cột
+        </button>
+        <button
+          style={{ marginRight: 10 }}
+          onClick={() => columnSelect("col-md-4 mt-1")}
+          className="btn btn-warning col-2"
+        >
+          3 cột
+        </button>
+        <button
+          style={{ marginRight: 10 }}
+          onClick={() => columnSelect("col-md-6 mt-1")}
+          className="btn btn-warning col-2"
+        >
+          2 cột
+        </button>
+        <button
+          onClick={() => columnSelect("col-md-12 mt-1")}
+          className="btn btn-warning col-2"
+        >
+          1 cột
+        </button>
+      </div>
+    </div>
+  );
 };
