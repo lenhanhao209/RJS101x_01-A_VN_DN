@@ -5,9 +5,11 @@ import { STAFFS } from "./shared/constants";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
+//Declaring App
 const App = () => {
   const [staffs, setStaffs] = useState(STAFFS);
   return (
+    //Display Navbar and staffs when click
     <div>
       <Navbar dark color="primary">
         <div className="container">
