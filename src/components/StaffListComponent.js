@@ -101,6 +101,7 @@ const StaffList = (props) => {
           </Card>
         ))}
       </div>
+      <Staff />
     </div>
   );
 };
