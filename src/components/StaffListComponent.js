@@ -50,28 +50,28 @@ const StaffList = (props) => {
         <button
           style={{ marginRight: 10 }}
           onClick={() => columnSelect("col-md-2 mt-1")}
-          className="btn btn-warning col-2"
+          className="btn btn-primary col-2"
         >
           6 cột
         </button>
         <button
           style={{ marginRight: 10 }}
           onClick={() => columnSelect("col-md-3 mt-1")}
-          className="btn btn-warning col-2"
+          className="btn btn-secondary col-2"
         >
           4 cột
         </button>
         <button
           style={{ marginRight: 10 }}
           onClick={() => columnSelect("col-md-4 mt-1")}
-          className="btn btn-warning col-2"
+          className="btn btn-success col-2"
         >
           3 cột
         </button>
         <button
           style={{ marginRight: 10 }}
           onClick={() => columnSelect("col-md-6 mt-1")}
-          className="btn btn-warning col-2"
+          className="btn btn-info col-2"
         >
           2 cột
         </button>
@@ -82,6 +82,27 @@ const StaffList = (props) => {
           1 cột
         </button>
       </div>
+      <div className="row mt-5"></div>
+      <div
+        className="row"
+        style={{
+          padding: "0 20px",
+          margin: "0 20px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {props.staffs.map((staff) => (
+          <Card
+            className={columDefault}
+            onClick={() => setSelectedStaff(staff)}
+          >
+            <CardTitle>{staff.name}</CardTitle>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
+
+export default StaffList;
