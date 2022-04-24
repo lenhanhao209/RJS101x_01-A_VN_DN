@@ -1497,15 +1497,15 @@
     "bootstrap" "~3"
     "font-awesome" "~4.7"
 
+"bootstrap@^4.0.0":
+  "integrity" "sha512-gulJE5dGFo6Q61V/whS6VM4WIyrlydXfCgkE+Gxe5hjrJ8rXLLZlALq7zq2RPhOc45PSwQpJkrTnc2KgD6cvmA=="
+  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-4.0.0.tgz"
+  "version" "4.0.0"
+
 "bootstrap@~3":
   "integrity" "sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA=="
   "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-3.4.1.tgz"
   "version" "3.4.1"
-
-"bootstrap@4.0.0":
-  "integrity" "sha512-gulJE5dGFo6Q61V/whS6VM4WIyrlydXfCgkE+Gxe5hjrJ8rXLLZlALq7zq2RPhOc45PSwQpJkrTnc2KgD6cvmA=="
-  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-4.0.0.tgz"
-  "version" "4.0.0"
 
 "boxen@^1.2.1":
   "integrity" "sha512-TNPjfTr432qx7yOjQyaXm3dSR0MH9vXp7eT1BFSl/C51g+EFnOR9hTg1IreahGBmDNCehscshe45f+C1TBZbLw=="
@@ -7567,7 +7567,7 @@
     "strip-ansi" "3.0.1"
     "text-table" "0.2.0"
 
-"react-dom@^0.14.7 || ^15.0.0 || ^16.0.0", "react-dom@^16.0.0", "react-dom@^16.3.2", "react-dom@>=15.0.0", "react-dom@0.14.x || ^15.0.0 || ^16.0.0":
+"react-dom@^0.14.7 || ^15.0.0 || ^16.0.0", "react-dom@^16.0.0", "react-dom@^16.14.0", "react-dom@>=15.0.0", "react-dom@0.14.x || ^15.0.0 || ^16.0.0":
   "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz"
   "version" "16.14.0"
@@ -7715,7 +7715,7 @@
     "prop-types" "^15.5.8"
     "warning" "^3.0.0"
 
-"react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0", "react@^15.3.0 || ^16.0.0", "react@^16.0.0", "react@^16.14.0", "react@^16.3.2", "react@>=15", "react@>=15.0.0", "react@0.14.x || ^15.0.0 || ^16.0.0":
+"react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0", "react@^15.3.0 || ^16.0.0", "react@^16.0.0", "react@^16.14.0", "react@>=15", "react@>=15.0.0", "react@0.14.x || ^15.0.0 || ^16.0.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
@@ -7724,7 +7724,7 @@
     "object-assign" "^4.1.1"
     "prop-types" "^15.6.2"
 
-"reactstrap@5.0.0":
+"reactstrap@^5.0.0":
   "integrity" "sha512-y0eju/LAK7gbEaTFfq2iW92MF7/5Qh0tc1LgYr2mg92IX8NodGc03a+I+cp7bJ0VXHAiLy0bFL9UP89oSm4cBg=="
   "resolved" "https://registry.npmjs.org/reactstrap/-/reactstrap-5.0.0.tgz"
   "version" "5.0.0"
