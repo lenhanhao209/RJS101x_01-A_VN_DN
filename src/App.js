@@ -1,30 +1,24 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Menu from "./components/MenuComponent";
-import { DISHES } from "./shared/dishes";
+import StaffList from "./components/StaffListComponent.js";
+import { STAFFS } from "./shared/constants";
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      dishes: DISHES,
-    };
-  }
-  render() {
-    return (
-      <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
-
-        <Menu dishes={this.state.dishes} />
-      </div>
-    );
-  }
-}
+//Declaring App
+const App = () => {
+  const [staffs, setStaffs] = useState(STAFFS);
+  return (
+    //Display Navbar and staffs when click
+    <div>
+      <Navbar dark color="primary">
+        <div className="container">
+          <NavbarBrand href="/">Ứng dụng quản lý nhân sự v1.0</NavbarBrand>
+        </div>
+      </Navbar>
+      <StaffList staffs={staffs} />
+    </div>
+  );
+};
 
 export default App;
