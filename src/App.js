@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Main from "./components/MainComponent";
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <Main />
-    </div>
+    </BrowserRouter>
   );
 };
 

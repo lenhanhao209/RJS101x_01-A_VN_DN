@@ -3,25 +3,27 @@ import { Navbar, NavbarBrand } from "reactstrap";
 import Menu from "./MenuComponent";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
+import Home from "./HomeComponent";
 import { DISHES } from "../shared/dishes";
 import DishDetail from "./DishDetailComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 const Main = (props) => {
   const [dishes, setDishes] = useState(DISHES);
-  const [selectedDish, setSelectedDish] = useState(null);
-
-  const onDishSelect = (dishId) => {
-    setSelectedDish(dishId);
+  const HomePage = () => {
+    return <Home />;
   };
+
   return (
     <div>
       <Header />
-      <Menu dishes={dishes} onDishSelect={onDishSelect} />
-      <DishDetail dish={dishes.filter((dish) => dish.id === selectedDish)[0]} />
+      <Routes>
+        <Route path="/home" element={HomePage} />
+        <Route path="/menu" element={<Menu dishes={dishes} />} />
+      </Routes>
       <Footer />
     </div>
   );
 };
-
 export default Main;
