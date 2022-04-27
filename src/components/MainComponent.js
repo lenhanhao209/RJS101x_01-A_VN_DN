@@ -19,21 +19,15 @@ const Main = (props) => {
   const [leaders, setLeaders] = useState(LEADERS);
   const [promotions, setPromotions] = useState(PROMOTIONS);
 
-  const HomePage = () => {
-    return (
-      <Home
-        dish={dishes.filter((dish) => dish.featured)[0]}
-        promotion={promotions.filter((promo) => promo.featured)[0]}
-        leader={leaders.filter((leader) => leader.featured)[0]}
-      />
-    );
-  };
-
   return (
     <div>
       <Header />
       <Routes>
-        <Route path="/home" element={HomePage} />
+        <Route path="/home" element={<Home
+            dish={dishes[0]}
+            promotion={promotions.filter((promo) => promo.featured)[0]}
+            leader={leaders.filter((leader) => leader.featured)[0]}
+        />} />
         <Route path="/menu" element={<Menu dishes={dishes} />} />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>
