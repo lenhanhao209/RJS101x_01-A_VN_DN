@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+import { useParams } from "react-router-dom";
 
-const DishDetail = ({ dish }) => {
+const DishDetail = ({ dishes, comments }) => {
+  const { id } = useParams();
+
+  let dish = dishes.find((dish) => dish.id == id);
+  console.log(dish);
+  comments = comments.filter((comment) => comment.dishId == id);
+
   const renderDish = (dish) => {
     return (
       <div className="col-12 col-md-5 m-1">
         <Card>
-          <CardImg width="100%" src={dish.image} value={dish.name} />
+          <CardImg width="100%" src={"/" + dish.image} value={dish.name} />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>

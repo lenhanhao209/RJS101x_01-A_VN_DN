@@ -9,7 +9,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 
-const RenderMenuItem = ({ dish, onClick }) => {
+const RenderMenuItem = ({ dish }) => {
   return (
     <Card>
       <Link to={`/menu/${dish.id}`}>
@@ -26,12 +26,14 @@ const Menu = (props) => {
   const menu = props.dishes.map((dish) => {
     return (
       <div key={dish.id} className="col-12 col-md-5 m-1">
-        <Card onClick={() => props.onDishSelect(dish.id)}>
-          <CardImg width="100%" src={dish.image} alt={dish.name} />
-          <CardImgOverlay>
-            <CardTitle>{dish.name}</CardTitle>
-          </CardImgOverlay>
-        </Card>
+        <Link to={`/menu/${dish.id}`}>
+          <Card>
+            <CardImg width="100%" src={dish.image} alt={dish.name} />
+            <CardImgOverlay>
+              <CardTitle>{dish.name}</CardTitle>
+            </CardImgOverlay>
+          </Card>
+        </Link>
       </div>
     );
   });
@@ -42,7 +44,7 @@ const Menu = (props) => {
           <BreadcrumbItem>
             <Link to="/home">Home</Link>
           </BreadcrumbItem>
-          <Breadcrumb active>Menu</Breadcrumb>
+          <BreadcrumbItem active>Menu</BreadcrumbItem>
         </Breadcrumb>
         <div className="col-12">
           <h3>Menu</h3>

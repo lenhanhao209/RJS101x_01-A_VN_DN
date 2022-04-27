@@ -19,21 +19,6 @@ const Main = (props) => {
   const [leaders, setLeaders] = useState(LEADERS);
   const [promotions, setPromotions] = useState(PROMOTIONS);
 
-  const DishWithId = ({ match }) => {
-    return (
-      <DishDetail
-        dish={
-          this.state.dishes.filter(
-            (dish) => dish.id === parseInt(match.params.dishId, 10)
-          )[0]
-        }
-        comments={this.state.comments.filter(
-          (comment) => comment.dishId === parseInt(match.params.dishId, 10)
-        )}
-      />
-    );
-  };
-
   return (
     <div>
       <Header />
@@ -49,7 +34,11 @@ const Main = (props) => {
           }
         />
         <Route exact path="/menu" element={<Menu dishes={dishes} />} />
-        <Route path="/menu/:dishId" component={DishWithId} />
+        <Route
+          exact
+          path="/menu/:id"
+          element={<DishDetail dishes={dishes} comments={comments} />}
+        />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
