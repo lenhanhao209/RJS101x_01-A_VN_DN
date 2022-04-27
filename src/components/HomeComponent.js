@@ -8,7 +8,7 @@ import {
   CardSubtitle,
 } from "reactstrap";
 
-const RenderCard = (item) => {
+const RenderCard = ({ item }) => {
   return (
     <Card>
       <CardImg src={item.image} alt={item.name} />
@@ -40,5 +40,13 @@ const Home = (props) => {
     </div>
   );
 };
+
+// const Home = (props) => {
+//   return (
+//     <div className="container">
+//       <h4>Home</h4>
+//     </div>
+//   );
+// };
 
 export default Home;

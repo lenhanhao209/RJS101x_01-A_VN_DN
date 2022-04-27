@@ -22,9 +22,9 @@ const Main = (props) => {
   const HomePage = () => {
     return (
       <Home
-        dish={dishes.dish}
-        promotion={promotions.promo}
-        leader={leaders.leader}
+        dish={dishes.filter((dish) => dish.featured)[0]}
+        promotion={promotions.filter((promo) => promo.featured)[0]}
+        leader={leaders.filter((leader) => leader.featured)[0]}
       />
     );
   };
@@ -35,7 +35,7 @@ const Main = (props) => {
       <Routes>
         <Route path="/home" element={HomePage} />
         <Route path="/menu" element={<Menu dishes={dishes} />} />
-        <Route exact path="/contact" element={Contact} />
+        <Route exact path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </div>
