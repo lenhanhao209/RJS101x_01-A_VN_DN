@@ -5,6 +5,7 @@ import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Home from "./HomeComponent";
 import Contact from "./ContactComponent";
+import About from "./AboutComponent";
 import { DISHES } from "../shared/dishes";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { COMMENTS } from "../shared/comments";
@@ -40,6 +41,7 @@ const Main = (props) => {
           element={<DishDetail dishes={dishes} comments={comments} />}
         />
         <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/about" element={<About leaders={leaders} />} />
       </Routes>
       <Footer />
     </div>
