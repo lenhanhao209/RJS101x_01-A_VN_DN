@@ -10,6 +10,13 @@ import {
 import { Link } from "react-router-dom";
 
 const RenderSalary = (salary) => {
+  const luongCB = 3000000;
+  const luongGio = 200000 / 8;
+  let salaryEmployee = (
+    salary.salary.salaryScale * luongCB +
+    salary.salary.overTime * luongGio
+  ).toFixed(0);
+
   return (
     <Card>
       <CardTitle className="p-3 bg-white rounded m-2">
@@ -19,6 +26,9 @@ const RenderSalary = (salary) => {
         <CardText>Mã nhân viên:{salary.salary.id}</CardText>
         <CardText>Hệ số lương:{salary.salary.salaryScale}</CardText>
         <CardText>Số giờ làm thêm:{salary.salary.overTime}</CardText>
+        <CardText className="bg-light p-2 shadow">
+          Lương: {salaryEmployee}
+        </CardText>
       </CardBody>
     </Card>
   );
