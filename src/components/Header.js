@@ -21,7 +21,7 @@ const Header = () => {
         <div className="container-fluid header">
           <NavbarToggler onClick={toggleNav} />
           <NavbarBrand>
-            <img src="assets/images/logo.png" alt="logo" width="50" />
+            <img src="/assets/images/logo.png" alt="logo" width="50" />
           </NavbarBrand>
           <Collapse isOpen={isNavOpen} navbar>
             <Nav navbar>
