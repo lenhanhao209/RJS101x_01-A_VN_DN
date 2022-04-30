@@ -38,6 +38,7 @@ const Salary = (props) => {
   //Set up function to comparing
   const [sortSalary, setSortSalary] = useState(false);
   const salary = props.salarys
+    //Set up the compare condition
     .sort((a, b) =>
       sortSalary ? a.salaryScale - b.salaryScale : b.salaryScale - a.salaryScale
     )
