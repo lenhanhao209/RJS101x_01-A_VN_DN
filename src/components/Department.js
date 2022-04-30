@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import {
-  Card,
-  CardText,
-  CardTitle,
-  Breadcrumb,
-  BreadcrumbItem,
-  CardBody,
-} from "reactstrap";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Card, CardText, CardTitle, CardBody } from "reactstrap";
 
 const Department = (props) => {
   const department = props.departments.map((depart) => {

@@ -27,7 +27,7 @@ const Main = (props) => {
             />
           }
         />
-        <Route path="/nhanvien/:id" element={<StaffDetail staffs={staffs} />} />
+
         <Route
           path="/phongban"
           element={<Department departments={departments} />}

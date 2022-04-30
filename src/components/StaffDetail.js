@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+import React from "react";
+import { CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";

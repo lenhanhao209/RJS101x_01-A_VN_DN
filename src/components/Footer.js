@@ -4,7 +4,7 @@ import { Navbar, NavbarBrand } from "reactstrap";
 
 function Footer(props) {
   return (
-    <div className="footer bg-primary">
+    <div className="footer bg-info">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-7 col-sm-5">
