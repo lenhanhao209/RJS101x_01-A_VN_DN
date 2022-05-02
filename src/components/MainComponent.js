@@ -6,13 +6,22 @@ import Footer from "./FooterComponent";
 import Home from "./HomeComponent";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
+import { connect } from "react-redux";
 import { DISHES } from "../shared/dishes";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Redirect, withRouter } from "react-router-dom";
 import { COMMENTS } from "../shared/comments";
 import { LEADERS } from "../shared/leaders";
 import { PROMOTIONS } from "../shared/promotions";
-import { Navbar, NavbarBrand } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+const mapStateToProps = (state) => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
+    leaders: state.leaders,
+    promotions: state.promotions,
+  };
+};
 
 const Main = (props) => {
   const [dishes, setDishes] = useState(DISHES);
@@ -47,4 +56,4 @@ const Main = (props) => {
     </div>
   );
 };
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));
