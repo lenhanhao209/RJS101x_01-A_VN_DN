@@ -16,7 +16,7 @@ const StaffDetail = ({ staffs }) => {
         <div className="row">
           <Breadcrumb>
             <BreadcrumbItem>
-              <Link to="/nhanvien">Nhân viên</Link>
+              <Link to="/staff">Nhân viên</Link>
             </BreadcrumbItem>
             <BreadcrumbItem active>{staff.name}</BreadcrumbItem>
           </Breadcrumb>

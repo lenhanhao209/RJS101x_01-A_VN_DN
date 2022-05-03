@@ -9,7 +9,7 @@ const StaffList = (props) => {
         className="col-lg-2 col-md-4 col-sm-12"
         style={{ justifyContent: "center" }}
       >
-        <Link to={"/nhanvien/" + nv.id}>
+        <Link to={"/staff/" + nv.id}>
           <div onClick={() => props.onStaffSelect(nv.id)}></div>
           <img src={nv.image} alt={nv.name} />
           <p>{nv.name}</p>
