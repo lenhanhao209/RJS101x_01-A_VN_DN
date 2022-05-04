@@ -26,17 +26,17 @@ const Header = () => {
           <Collapse isOpen={isNavOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <Link to="/staff">
+                <Link to="/nhanvien">
                   <span className="fa fa-users"></span>Nhân viên
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to="/department">
+                <Link to="/phongban">
                   <span className="fa fa-address-card"></span>Phòng ban
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to="/salary">
+                <Link to="/luong">
                   <hspan className="fa fa-money"></hspan>Bảng lương
                 </Link>
               </NavItem>
