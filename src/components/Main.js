@@ -10,8 +10,21 @@ import { STAFFS, DEPARTMENTS } from "../shared/constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = (props) => {
-  const [staffs, setStaffs] = useState(STAFFS);
-  const [departments, setDepartments] = useState(DEPARTMENTS);
+  const [state, setState] = useState({
+    staffs: STAFFS,
+    departments: DEPARTMENTS,
+  });
+
+  // const [staffs, setStaffs] = useState(STAFFS);
+  // const [departments, setDepartments] = useState(DEPARTMENTS);
+
+  const addStaff = (staff) => {
+    const id = Math.floor(Math.random() * 10000 + 1);
+    const newStaff = { id, ...staff };
+    setState({
+      staffs: [...props.staffs, newStaff],
+    });
+  };
 
   return (
     <div>
@@ -22,22 +35,23 @@ const Main = (props) => {
           path="/nhanvien"
           element={
             <StaffList
-              staffs={staffs}
-              onStaffSelect={<StaffDetail staffs={staffs} />}
+              staffs={<staffs />}
+              onAdd={addStaff}
+              onStaffSelect={<StaffDetail staffs={<staffs />} />}
             />
           }
         />
         <Route
           exact
           path="/nhanvien/:id"
-          element={<StaffDetail staffs={staffs} />}
+          element={<StaffDetail staffs={<staffs />} />}
         />
 
         <Route
           path="/phongban"
-          element={<Department departments={departments} />}
+          element={<Department departments={<departments />} />}
         />
-        <Route path="/luong" element={<Salary salarys={staffs} />} />
+        <Route path="/luong" element={<Salary salarys={<staffs />} />} />
       </Routes>
       <Footer />
     </div>
