@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from "react";
 import {
@@ -22,6 +23,7 @@ import {
 import { Control, Errors, LocalForm } from "react-redux-form";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { addComment } from "../redux/ActionCreators";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -43,10 +45,8 @@ const DishDetail = ({ dishes, comments }) => {
   const [commentsVal, setCommentsVal] = useState("");
 
   const { id } = useParams();
-
-  let dish = dishes.find((dish) => dish.id == id);
-
-  comments = comments.filter((comment) => comment.dishId == id);
+  let dish = dishes.find((dish) => dish.id === parseInt(id));
+  comments = comments.filter((comment) => comment.dishId === parseInt(id));
 
   const renderDish = (dish) => {
     return (
@@ -62,7 +62,7 @@ const DishDetail = ({ dishes, comments }) => {
     );
   };
 
-  const renderComments = (comments) => {
+  const RenderComments = ({ comments }) => {
     if (comments != null) {
       return (
         <div className="col-12 col-md-5 m-1">
@@ -118,12 +118,12 @@ const DishDetail = ({ dishes, comments }) => {
                       name="name"
                       placeholder=""
                       className="form-control"
+                      onChange={(e) => setName(e.target.value)}
                       validators={{
                         required,
                         minLength: minLength(3),
                         maxLength: maxLength(15),
                       }}
-                      onChange={(e) => setName(e.target.value)}
                     />
                     <Errors
                       className="text-danger"
@@ -143,10 +143,26 @@ const DishDetail = ({ dishes, comments }) => {
                   </Label>
                   <Col md={12}>
                     <Input
-                      className="mt-3"
+                      className="mt-2"
+                      model=".comment"
                       type="textarea"
                       name="comment"
                       onChange={(e) => setCommentsVal(e.target.value)}
+                      validators={{
+                        required,
+                        minLength: minLength(3),
+                        maxLength: maxLength(15),
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model=".comment"
+                      show="touched"
+                      messages={{
+                        required: "Required",
+                        minLength: "Must be greater than 2 characters",
+                        maxLength: "Must be 15 characters or less",
+                      }}
                     />
                   </Col>
                 </Row>
@@ -177,7 +193,11 @@ const DishDetail = ({ dishes, comments }) => {
           <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
         </Breadcrumb>
         {renderDish(dish)}
-        {renderComments(dish.comments)}
+        <RenderComments
+          comments={comments}
+          addComment={addComment}
+          dishId={dish.id}
+        />
       </div>
     </div>
   ) : (
