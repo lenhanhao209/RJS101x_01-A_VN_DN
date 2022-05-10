@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState } from "react";
 import {
@@ -47,15 +48,23 @@ function CommentForm(props) {
   };
 
   const handleSubmit = (e) => {
-    dispatch({
-      type: ActionTypes.ADD_COMMENT,
-      payload: {
-        dishId: props.dishId,
-        rating: newComment.rating,
-        name: newComment.name,
-        comment: newComment.comment,
-      },
-    });
+    // dispatch({
+    //   type: ActionTypes.ADD_COMMENT,
+    //   payload: {
+    //     dishId: props.dishId,
+    //     rating: newComment.rating,
+    //     author: newComment.name,
+    //     comment: newComment.comment,
+    //   },
+    // });
+    dispatch(
+      addComment(
+        props.dishId,
+        newComment.rating,
+        newComment.name,
+        newComment.comment
+      )
+    );
     e.preventDefault();
   };
   return (
@@ -203,7 +212,7 @@ const DishDetail = ({ dishes, comments }) => {
         {renderDish(dish)}
         <RenderComments
           comments={comments}
-          addComment={addComment}
+          // addComment={addComment}
           dishId={dish.id}
         />
       </div>

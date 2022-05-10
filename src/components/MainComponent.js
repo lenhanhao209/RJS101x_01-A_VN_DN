@@ -8,8 +8,7 @@ import Home from "./HomeComponent";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Routes, Route } from "react-router-dom";
-import { addComment } from "../redux/ActionCreators";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
@@ -17,8 +16,6 @@ const Main = () => {
   const comments = useSelector((state) => state.comments);
   const promotions = useSelector((state) => state.promotions);
   const leaders = useSelector((state) => state.leaders);
-
-  const dispatch = useDispatch();
 
   return (
     <div>
@@ -38,13 +35,7 @@ const Main = () => {
         <Route
           exact
           path="/menu/:id"
-          element={
-            <DishDetail
-              dishes={dishes}
-              comments={comments}
-              addComment={addComment}
-            />
-          }
+          element={<DishDetail dishes={dishes} comments={comments} />}
         />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About leaders={leaders} />} />
