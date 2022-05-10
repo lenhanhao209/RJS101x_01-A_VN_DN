@@ -23,6 +23,8 @@ import { Control, Errors, LocalForm } from "react-redux-form";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { addComment } from "../redux/ActionCreators";
+import * as ActionTypes from "../redux/ActionTypes";
+import { useDispatch } from "react-redux";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -35,6 +37,7 @@ function CommentForm(props) {
     name: "",
     comment: "",
   });
+  const dispatch = useDispatch();
   const toggleModal = () => setIsOpen(!isOpen);
   const handleInputChange = (e) => {
     const comment = { ...newComment };
@@ -44,12 +47,15 @@ function CommentForm(props) {
   };
 
   const handleSubmit = (e) => {
-    props.addComment(
-      props.dishId,
-      newComment.rating,
-      newComment.name,
-      newComment.comment
-    );
+    dispatch({
+      type: ActionTypes.ADD_COMMENT,
+      payload: {
+        dishId: props.dishId,
+        rating: newComment.rating,
+        name: newComment.name,
+        comment: newComment.comment,
+      },
+    });
     e.preventDefault();
   };
   return (
