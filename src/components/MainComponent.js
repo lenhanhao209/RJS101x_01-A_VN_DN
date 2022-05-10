@@ -9,14 +9,16 @@ import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Routes, Route } from "react-router-dom";
 import { addComment } from "../redux/ActionCreators";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
-  const dishes = useSelector((item) => item.dishes);
-  const comments = useSelector((item) => item.comments);
-  const promotions = useSelector((item) => item.promotions);
-  const leaders = useSelector((item) => item.leaders);
+  const dishes = useSelector((state) => state.dishes);
+  const comments = useSelector((state) => state.comments);
+  const promotions = useSelector((state) => state.promotions);
+  const leaders = useSelector((state) => state.leaders);
+
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -40,7 +42,7 @@ const Main = () => {
             <DishDetail
               dishes={dishes}
               comments={comments}
-              // addComment={addComment}
+              addComment={addComment}
             />
           }
         />
