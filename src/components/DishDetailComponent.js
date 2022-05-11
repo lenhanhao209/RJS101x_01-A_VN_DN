@@ -24,7 +24,6 @@ import { Control, Errors, LocalForm } from "react-redux-form";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { addComment } from "../redux/ActionCreators";
-import * as ActionTypes from "../redux/ActionTypes";
 import { useDispatch } from "react-redux";
 
 const required = (val) => val && val.length;
