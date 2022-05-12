@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
   const dishes = useSelector((state) => state.dishes);
+  console.log(dishes);
   const comments = useSelector((state) => state.comments);
   const promotions = useSelector((state) => state.promotions);
   const leaders = useSelector((state) => state.leaders);
