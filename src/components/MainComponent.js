@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import DishDetail from "./DishDetailComponent";
 import Menu from "./MenuComponent";
 import Header from "./HeaderComponent";
@@ -8,31 +8,30 @@ import Home from "./HomeComponent";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchDishes } from "../redux/ActionCreators";
+import { Loading } from "./LoadingComponent";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
   const dishes = useSelector((state) => state.dishes);
-  console.log(dishes);
   const comments = useSelector((state) => state.comments);
   const promotions = useSelector((state) => state.promotions);
   const leaders = useSelector((state) => state.leaders);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDishes());
+  }, [dispatch]);
 
   return (
     <div>
       <Header />
       <Routes>
-        <Route
-          path="/home"
-          element={
-            <Home
-              dish={dishes[0]}
-              promotion={promotions.filter((promo) => promo.featured)[0]}
-              leader={leaders.filter((leader) => leader.featured)[0]}
-            />
-          }
-        />
-        <Route exact path="/menu" element={<Menu dishes={dishes} />} />
+        <Route path="/home" element={<Home />} />
+        <Route exact path="/menu" element={<Menu />} />
         <Route
           exact
           path="/menu/:id"

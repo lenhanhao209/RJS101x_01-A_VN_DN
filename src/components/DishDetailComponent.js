@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardImg,
@@ -24,8 +24,9 @@ import { Control, Errors, LocalForm } from "react-redux-form";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { addComment } from "../redux/ActionCreators";
-import * as ActionTypes from "../redux/ActionTypes";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDishes } from "../redux/ActionCreators";
+import { Loading } from "./LoadingComponent";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -48,15 +49,6 @@ function CommentForm(props) {
   };
 
   const handleSubmit = (e) => {
-    // dispatch({
-    //   type: ActionTypes.ADD_COMMENT,
-    //   payload: {
-    //     dishId: props.dishId,
-    //     rating: newComment.rating,
-    //     author: newComment.name,
-    //     comment: newComment.comment,
-    //   },
-    // });
     dispatch(
       addComment(
         props.dishId,
@@ -151,10 +143,19 @@ function CommentForm(props) {
   );
 }
 
-const DishDetail = ({ dishes, comments }) => {
+const DishDetail = (props) => {
   const { id } = useParams();
-  let dish = dishes.find((dish) => dish.id === parseInt(id));
-  comments = comments.filter((comment) => comment.dishId === parseInt(id));
+  const dish = props.dishes.dishes.find((dish) => dish.id === parseInt(id));
+
+  const comments = props.comments.filter(
+    (comment) => comment.dishId === parseInt(id)
+  );
+  const dishes = useSelector((state) => state.dishes);
+  const dispatch = useDispatch();
+  console.log(dishes);
+  useEffect(() => {
+    dispatch(fetchDishes());
+  }, [dispatch]);
 
   const renderDish = (dish) => {
     return (
@@ -210,15 +211,13 @@ const DishDetail = ({ dishes, comments }) => {
           <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
         </Breadcrumb>
         {renderDish(dish)}
-        <RenderComments
-          comments={comments}
-          // addComment={addComment}
-          dishId={dish.id}
-        />
+        <RenderComments comments={comments} dishId={dish.id} />
       </div>
     </div>
   ) : (
-    <div></div>
+    <div>
+      <Loading />
+    </div>
   );
 };
 

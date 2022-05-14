@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -8,6 +8,9 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchDishes } from "../redux/ActionCreators";
+import { Loading } from "./LoadingComponent";
 
 const RenderMenuItem = ({ dish }) => {
   return (
@@ -22,15 +25,22 @@ const RenderMenuItem = ({ dish }) => {
   );
 };
 
-const Menu = (props) => {
-  const menu = props.dishes.map((dish) => {
+const Menu = () => {
+  const dishes = useSelector((state) => state.dishes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDishes());
+  }, [dispatch]);
+
+  const menu = dishes.dishes.map((item) => {
     return (
-      <div key={dish.id} className="col-12 col-md-5 m-1">
-        <Link to={`/menu/${dish.id}`}>
+      <div key={item.id} className="col-12 col-md-5 m-1">
+        <Link to={`/menu/${item.id}`}>
           <Card>
-            <CardImg width="100%" src={dish.image} alt={dish.name} />
+            <CardImg src={item.image} alt={item.name} />
             <CardImgOverlay>
-              <CardTitle>{dish.name}</CardTitle>
+              <CardTitle>{item.name}</CardTitle>
             </CardImgOverlay>
           </Card>
         </Link>
@@ -51,7 +61,7 @@ const Menu = (props) => {
           <hr />
         </div>
       </div>
-      <div className="row">{menu}</div>
+      {dishes.isLoading ? <Loading /> : <div className="row">{menu}</div>}
     </div>
   );
 };
