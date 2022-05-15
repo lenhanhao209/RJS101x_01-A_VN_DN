@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, Form, Errors, actions } from "react-redux-form";
+import { useDispatch } from "react-redux";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -20,10 +21,13 @@ const validEmail = (val) =>
   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 const Contact = (props) => {
+  const dispatch = useDispatch();
+  const resetFeedbackForm = () => {
+    dispatch(actions.reset("feedback"));
+  };
   const handleSubmit = (state) => {
     alert("Current State is:" + JSON.stringify(state));
-    actions.reset("feedback");
-    // props.resetForm();
+    resetFeedbackForm();
   };
 
   return (
