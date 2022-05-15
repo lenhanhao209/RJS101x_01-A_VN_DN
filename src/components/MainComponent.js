@@ -10,8 +10,6 @@ import About from "./AboutComponent";
 import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDishes } from "../redux/ActionCreators";
-import { Loading } from "./LoadingComponent";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {

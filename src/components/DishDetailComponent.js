@@ -24,7 +24,7 @@ import { Control, Errors, LocalForm } from "react-redux-form";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { addComment } from "../redux/ActionCreators";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchDishes } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
 
@@ -150,9 +150,9 @@ const DishDetail = (props) => {
   const comments = props.comments.filter(
     (comment) => comment.dishId === parseInt(id)
   );
-  const dishes = useSelector((state) => state.dishes);
+
   const dispatch = useDispatch();
-  console.log(dishes);
+
   useEffect(() => {
     dispatch(fetchDishes());
   }, [dispatch]);
