@@ -24,9 +24,6 @@ function Header() {
     isModalOpen: false,
   });
 
-  // const [isNavOpen, setIsNavOpen] = useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-
   const toggleNav = () => {
     setState({
       isNavOpen: !state.isNavOpen,

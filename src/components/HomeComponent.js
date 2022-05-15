@@ -8,13 +8,15 @@ import {
   CardSubtitle,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchDishes } from "../redux/ActionCreators";
+import { fetchDishes, fetchPromos } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 
 const RenderCard = ({ item }) => {
+  console.log(item);
   return (
     <Card>
-      <CardImg src={item.image} alt={item.name} />
+      <CardImg src={baseUrl + item.image} alt={baseUrl + item.name} />
       <CardBody>
         <CardTitle>{item.name}</CardTitle>
         {item.designation ? (
@@ -34,8 +36,8 @@ const Home = (props) => {
 
   useEffect(() => {
     dispatch(fetchDishes());
+    dispatch(fetchPromos());
   }, [dispatch]);
-
   return (
     <div className="container">
       <div className="row align-items-start">
@@ -47,7 +49,11 @@ const Home = (props) => {
           )}
         </div>
         <div className="col-12 col-md m-1">
-          <RenderCard item={promotions[0]} />
+          {promotions.isLoading ? (
+            <Loading />
+          ) : (
+            <RenderCard item={promotions.promotions[0]} />
+          )}
         </div>
         <div className="col-12 col-md m-1">
           <RenderCard item={leaders[0]} />

@@ -11,12 +11,13 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDishes } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 
 const RenderMenuItem = ({ dish }) => {
   return (
     <Card>
       <Link to={`/menu/${dish.id}`}>
-        <CardImg width="100%" src={dish.image} alt={dish.name} />
+        <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
         <CardImgOverlay>
           <CardTitle>{dish.name}</CardTitle>
         </CardImgOverlay>
@@ -38,7 +39,7 @@ const Menu = () => {
       <div key={item.id} className="col-12 col-md-5 m-1">
         <Link to={`/menu/${item.id}`}>
           <Card>
-            <CardImg src={item.image} alt={item.name} />
+            <CardImg src={baseUrl + item.image} alt={item.name} />
             <CardImgOverlay>
               <CardTitle>{item.name}</CardTitle>
             </CardImgOverlay>

@@ -9,7 +9,11 @@ import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchDishes } from "../redux/ActionCreators";
+import {
+  fetchComments,
+  fetchDishes,
+  fetchPromos,
+} from "../redux/ActionCreators";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
@@ -17,11 +21,18 @@ const Main = () => {
   const comments = useSelector((state) => state.comments);
   const promotions = useSelector((state) => state.promotions);
   const leaders = useSelector((state) => state.leaders);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDishes());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchComments());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchPromos());
   }, [dispatch]);
 
   return (

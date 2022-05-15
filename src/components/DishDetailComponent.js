@@ -27,6 +27,7 @@ import { addComment } from "../redux/ActionCreators";
 import { useDispatch } from "react-redux";
 import { fetchDishes } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -147,7 +148,7 @@ const DishDetail = (props) => {
   const { id } = useParams();
   const dish = props.dishes.dishes.find((dish) => dish.id === parseInt(id));
 
-  const comments = props.comments.filter(
+  const comments = props.comments.comments.filter(
     (comment) => comment.dishId === parseInt(id)
   );
 
@@ -161,7 +162,7 @@ const DishDetail = (props) => {
     return (
       <div className="col-12 col-md-5 m-1">
         <Card>
-          <CardImg width="100%" src={"/" + dish.image} value={dish.name} />
+          <CardImg width="100%" src={baseUrl + dish.image} />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
             <CardText>{dish.description}</CardText>
