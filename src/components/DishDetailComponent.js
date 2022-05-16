@@ -23,7 +23,7 @@ import {
 import { Control, Errors, LocalForm } from "react-redux-form";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { addComment } from "../redux/ActionCreators";
+import { postComment } from "../redux/ActionCreators";
 import { useDispatch } from "react-redux";
 import { fetchDishes } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
@@ -51,7 +51,7 @@ function CommentForm(props) {
 
   const handleSubmit = (e) => {
     dispatch(
-      addComment(
+      postComment(
         props.dishId,
         newComment.rating,
         newComment.name,
@@ -172,7 +172,8 @@ const DishDetail = (props) => {
     );
   };
 
-  const RenderComments = ({ comments, addComment, dishId }) => {
+  const RenderComments = ({ comments, postComment, dishId }) => {
+    console.log(comments);
     if (comments != null) {
       return (
         <div className="col-12 col-md-5 m-1">
@@ -194,7 +195,7 @@ const DishDetail = (props) => {
               );
             })}
           </ul>
-          <CommentForm dishId={dishId} addComment={addComment} />
+          <CommentForm dishId={dishId} postComment={postComment} />
         </div>
       );
     } else {

@@ -8,32 +8,14 @@ import Home from "./HomeComponent";
 import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Routes, Route } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchComments,
-  fetchDishes,
-  fetchPromos,
-} from "../redux/ActionCreators";
+import { useSelector } from "react-redux";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = () => {
   const dishes = useSelector((state) => state.dishes);
   const comments = useSelector((state) => state.comments);
-  const promotions = useSelector((state) => state.promotions);
   const leaders = useSelector((state) => state.leaders);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchDishes());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchComments());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchPromos());
-  }, [dispatch]);
 
   return (
     <div>
