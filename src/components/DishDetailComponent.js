@@ -23,7 +23,7 @@ import {
 import { Control, Errors, LocalForm } from "react-redux-form";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { postComment } from "../redux/ActionCreators";
+import { fetchComments, postComment } from "../redux/ActionCreators";
 import { useDispatch } from "react-redux";
 import { fetchDishes } from "../redux/ActionCreators";
 import { Loading } from "./LoadingComponent";
@@ -145,6 +145,7 @@ function CommentForm(props) {
 }
 
 const DishDetail = (props) => {
+  console.log(props);
   const { id } = useParams();
   const dish = props.dishes.dishes.find((dish) => dish.id === parseInt(id));
 
@@ -156,6 +157,10 @@ const DishDetail = (props) => {
 
   useEffect(() => {
     dispatch(fetchDishes());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchComments());
   }, [dispatch]);
 
   const renderDish = (dish) => {
