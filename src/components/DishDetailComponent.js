@@ -145,7 +145,6 @@ function CommentForm(props) {
 }
 
 const DishDetail = (props) => {
-  console.log(props);
   const { id } = useParams();
   const dish = props.dishes.dishes.find((dish) => dish.id === parseInt(id));
 
