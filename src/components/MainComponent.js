@@ -9,8 +9,9 @@ import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { propTypes } from "redux-form";
 
 const Main = () => {
   const dishes = useSelector((state) => state.dishes);
@@ -20,17 +21,25 @@ const Main = () => {
   return (
     <div>
       <Header />
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route exact path="/menu" element={<Menu />} />
-        <Route
-          exact
-          path="/menu/:id"
-          element={<DishDetail dishes={dishes} comments={comments} />}
-        />
-        <Route exact path="/contact" element={<Contact />} />
-        <Route exact path="/about" element={<About leaders={leaders} />} />
-      </Routes>
+      <TransitionGroup>
+        <CSSTransition
+          // key={this.props.locations.key}
+          classNames="page"
+          timeout={300}
+        >
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route exact path="/menu" element={<Menu />} />
+            <Route
+              exact
+              path="/menu/:id"
+              element={<DishDetail dishes={dishes} comments={comments} />}
+            />
+            <Route exact path="/contact" element={<Contact />} />
+            <Route exact path="/about" element={<About leaders={leaders} />} />
+          </Routes>
+        </CSSTransition>
+      </TransitionGroup>
       <Footer />
     </div>
   );
